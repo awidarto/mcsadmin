@@ -1242,26 +1242,26 @@
                         <tbody>
 
                             <tr>
-                                <td colspan="2"><strong>Merchant Info</strong></td>
+                                <td colspan="2"><strong>Logistic Info</strong></td>
                             </tr>
 
                             <tr>
-                                <td>Merchant Name<hr /><span class="fine">Nama Merchant</span></td>
+                                <td>Logistic Name<hr /><span class="fine">Nama Logistic</span></td>
                                 <td>
-                                    Merchant ID : <span id="merchant_id_txt"></span><br />
+                                    Logistic ID : <span id="merchant_id_txt"></span><br />
                                     <input type="text" id="merchant_name" name="merchant_name" value="" /><br />
                                     <span class="fine">
-                                        <?php print form_checkbox(array('name'=>'show_merchant','id'=>'show_merchant','value'=>'show_merchant','checked'=>TRUE ));?> Show merchant name in delivery slip</span>
+                                        <?php print form_checkbox(array('name'=>'show_merchant','id'=>'show_merchant','value'=>'show_merchant','checked'=>TRUE ));?> Show logistic name in delivery slip</span>
                                     <input type="hidden" value="" id="merchant_id" name="merchant_id" />
                                     <input type="hidden" value="" id="merchant_fullname" name="merchant_fullname" />
                                     <input type="hidden" value="" id="merchant_email" name="merchant_email" />
                                 </td>
                             </tr>
                             <tr>
-                                <td>Store Name<hr /><span class="fine">Nama Toko</span></td>
+                                <td>Rate Scheme<hr /><span class="fine">Skema Tarif</span></td>
                                 <td id="application_id">
                                     <select name="app_id" id="app_id">
-                                        <option value="0">Select application domain</option>
+                                        <option value="0">Select Rate Item</option>
                                     </select>
                                 </td>
                             </tr>
@@ -1275,10 +1275,10 @@
                                 <td colspan="2"><strong>Delivery Info</strong></td>
                             </tr>
                             <tr>
-                                <td>Delivery ID Jayon / AWB Jayon:</td>
+                                <td>Fulfillment ID:</td>
                                 <td>
-                                    <input type="text" id="delivery_id" name="delivery_id" value="" />
-                                    <p class="fine">Hanya jika Delivery ID Jayon sudah ada sebelumnya, kosongkan jika tidak teredia</p>
+                                    <input type="text" id="fulfillment_code" name="fulfillment_code" value="" />
+                                    <p class="fine">Kosongkan jika tidak tersedia</p>
                                 </td>
                             </tr>
                             <tr>
@@ -1342,9 +1342,9 @@
                                 <td colspan="2"><strong>Order Detail</strong></td>
                             </tr>
                             <tr class="buyer_info">
-                                <td class="row_label" id="merchant_id_label">No Kode Penjualan Toko<hr /><span class="fine">No Kode Penjualan Toko</span></td>
+                                <td class="row_label" id="merchant_id_label">AWB / Logistic Delivery Code<hr /><span class="fine">No Kode Logistik</span></td>
                                 <td>
-                                    <input type="text" id="merchant_trans_id" name="merchant_trans_id" value="" /> <span class="fine">( No. Invoice / AWB / dll )</span>
+                                    <input type="text" id="merchant_trans_id" name="merchant_trans_id" value="" /> <span class="fine">( No. Resi / AWB / dll )</span>
                                 </td>
                             </tr>
 

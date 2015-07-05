@@ -250,7 +250,7 @@ td.cod{
                                 <td colspan="3"><?php print form_dropdown('type_scopes',$deliverytypes,$dtype,'id = "type_scopes"'); ?></td>
                             </tr>
                             <tr>
-                                <td><?php print (isset($merchant_select_title))?$merchant_select_title:'Merchant'; ?></td>
+                                <td><?php print (isset($merchant_select_title))?$merchant_select_title:'Logistik'; ?></td>
                                 <td colspan="3"><?php print form_dropdown('merchant_scopes',$merchantlist,$mid,'id = "merchant_scopes"'); ?></td>
                             </tr>
                             <tr>

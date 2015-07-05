@@ -254,7 +254,7 @@ div.stickyHeader {
 
                         <table style="width:500px;" id="recon_select" cellspacing="0" >
                             <tr>
-                                <td><?php print (isset($select_title))?$select_title:'Merchant'; ?></td>
+                                <td><?php print (isset($select_title))?$select_title:'Logistik'; ?></td>
                                 <td colspan="3"><?php print form_dropdown('user_scopes',$merchants,$id,'id = "user_scopes"'); ?></td>
                             </tr>
                             <tr>

@@ -226,7 +226,7 @@
 							</tr>
 							<?php if($main_info['show_merchant']):?>
 								<tr>
-									<td>Nama Penjual</td>
+									<td>Nama Logistik</td>
 									<td>
 										<?php print $main_info['merchant'].'</span>';?>
 									</td>
@@ -234,7 +234,7 @@
 							<?php endif;?>
 							<?php if($main_info['show_shop']):?>
 								<tr>
-									<td>Nama Toko</td>
+									<td>Nama Skema Tarif</td>
 									<td>
 										<?php //print $main_info['app_name'].'<br /><span class="fine">'.$main_info['app_name'].'</span>';?>
 										<?php print $main_info['app_name'].'</span>';?>
@@ -356,7 +356,7 @@ $merchant_info .= ($main_info['m_phone'] == '')?'Phone : '.$main_info['mc_phone'
                                 </td>
 							</tr>
                             <tr>
-                                <td class="row_label">No Kode Penjualan Toko</td>
+                                <td class="row_label">AWB / No Kode Logistik / No Resi</td>
                                 <td>
                                     <?php
                                         if(preg_match('/^TRX_/', $main_info['merchant_trans_id'])){

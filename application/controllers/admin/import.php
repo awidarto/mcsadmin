@@ -86,9 +86,9 @@ class Import extends Application
 
     public function index()
     {
-        $this->breadcrumb->add_crumb('Import','admin/import');
+        $this->breadcrumb->add_crumb('Shipment Data Import','admin/import');
 
-        $page['page_title'] = 'Import';
+        $page['page_title'] = 'Shipment Data Import';
         $this->ag_auth->view('import/upload',$page); // Load the view
     }
 
