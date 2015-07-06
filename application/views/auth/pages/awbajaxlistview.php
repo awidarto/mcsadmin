@@ -158,7 +158,7 @@
         $('#download-csv').on('click',function(){
 
             if($('#merchant_id').val() == ''){
-                alert('Please specify Merchant and valid Merchant ID');
+                alert('Please specify Logistic and valid Logistic ID');
             }else{
                 $.post('<?php print base_url() ?>admin/dl/awb',
                     {
@@ -185,7 +185,7 @@
         $('#get_date_range').on('click',function(){
 
             if($('#merchant_id').val() == ''){
-                alert('Please specify Merchant and valid Merchant ID');
+                alert('Please specify Logistic and valid Logistic ID');
             }else{
                 $('#generating').show();
 
@@ -311,7 +311,7 @@
 
                 <table style="width:500px;" id="recon_select" cellspacing="0" >
                     <tr>
-                        <td>Merchant ID :</td>
+                        <td>Logistic ID :</td>
                         <td colspan="3">
                             <span id="merchant_id_txt"></span><br />
                             <input type="text" value="" id="merchant_name" name="merchant_name" />

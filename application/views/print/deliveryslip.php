@@ -222,7 +222,7 @@
 						<tbody>
 
 							<tr>
-								<td colspan="2"><strong>Merchant Info</strong></td>
+								<td colspan="2"><strong>Logistic Info</strong></td>
 							</tr>
 							<?php if($main_info['show_merchant']):?>
 								<tr>
@@ -356,7 +356,7 @@ $merchant_info .= ($main_info['m_phone'] == '')?'Phone : '.$main_info['mc_phone'
                                 </td>
 							</tr>
                             <tr>
-                                <td class="row_label">AWB / No Kode Logistik / No Resi</td>
+                                <td class="row_label">No Kode Penjualan Toko</td>
                                 <td>
                                     <?php
                                         if(preg_match('/^TRX_/', $main_info['merchant_trans_id'])){
@@ -364,6 +364,22 @@ $merchant_info .= ($main_info['m_phone'] == '')?'Phone : '.$main_info['mc_phone'
                                         }else{
                                             print $main_info['merchant_trans_id'];
                                         }
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="row_label">Fulfillment / Order ID</td>
+                                <td>
+                                    <?php
+                                        print $main_info['fulfillment_code'];
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="row_label">Logistic AWB</td>
+                                <td>
+                                    <?php
+                                        print $main_info['logistic_awb'];
                                     ?>
                                 </td>
                             </tr>

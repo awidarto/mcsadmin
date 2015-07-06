@@ -28,7 +28,7 @@ class Members extends Application
 			'Username',
 			'Email',
 			'Full Name',
-			//'Merchant Name',
+			//'Logistic Name',
 			//'Bank Account',
 			'Street',
 			'District',
@@ -241,7 +241,7 @@ class Members extends Application
 	public function merchant()
 	{
 
-		$this->breadcrumb->add_crumb('Manage Merchants','admin/members/merchant');
+		$this->breadcrumb->add_crumb('Manage Logistics','admin/members/merchant');
 
 		$this->load->library('table');
 
@@ -249,7 +249,7 @@ class Members extends Application
 			'Username',
 			'Email',
 			'Full Name',
-			'Merchant Name',
+			'Logistic Name',
 			'Bank Account',
 			'Street',
 			'District',
@@ -288,7 +288,7 @@ class Members extends Application
 		$page['ajaxurl'] = 'admin/members/ajaxmerchant';
 		$page['add_button'] = array('link'=>'admin/members/merchant/add','label'=>'Add New Member');
         $page['group_button'] = false;
-		$page['page_title'] = 'Manage Merchants';
+		$page['page_title'] = 'Manage Logistics';
 		$this->ag_auth->view('memberajaxlistview',$page); // Load the view
 	}
 
@@ -458,11 +458,11 @@ class Members extends Application
 		{
 			$delete = '<span id="'.$key['id'].'" class="delete_link" style="cursor:pointer;text-decoration:underline;">Delete</span>'; // Build actions links
 			$editpass = anchor("admin/members/editpass/".$key['id']."/", "Password"); // Build actions links
-			if($key['group_id'] === group_id('merchant')){
-				$addapp = anchor("admin/members/merchant/apps/manage/".$key['id']."/", "Applications"); // Build actions links
-			}else{
-				$addapp = '&nbsp'; // Build actions links
-			}
+			//if($key['group_id'] === group_id('merchant')){
+				$addapp = anchor("admin/members/merchant/apps/manage/".$key['id']."/", "Rate Scheme"); // Build actions links
+			//}else{
+			//	$addapp = '&nbsp'; // Build actions links
+			//}
             $uplogo = anchor("admin/members/logo/".$key['id']."/", "Upload Logo"); // Build actions links
 			$edit = anchor("admin/members/merchant/edit/".$key['id']."/", "Edit"); // Build actions links
 			$detail = form_checkbox('assign[]',$key['id'],FALSE,'class="assign_check"').' '.anchor("admin/members/details/".$key['id']."/", '<span id="un_'.$key['id'].'">'.$key['username'].'</span>'); // Build detail links
@@ -519,7 +519,7 @@ class Members extends Application
 			'Username',
 			'Email',
 			'Full Name',
-			//'Merchant Name',
+			//'Logistic Name',
 			//'Bank Account',
 			'Street',
 			'District',
@@ -1152,15 +1152,15 @@ class Members extends Application
 	public function add()
 	{
 		if(in_array('merchant',$this->uri->segment_array())){
-			$this->breadcrumb->add_crumb('Manage Merchants','admin/members/merchant');
-			$this->breadcrumb->add_crumb('Add Merchant','admin/members/merchant/add');
-			$data['page_title'] = 'Add Merchant';
+			$this->breadcrumb->add_crumb('Manage Logistics','admin/members/merchant');
+			$this->breadcrumb->add_crumb('Add Logistic','admin/members/merchant/add');
+			$data['page_title'] = 'Add Logistic';
 
 			$back_url = 'admin/members/merchant';
 			$success_url = 'admin/members/merchant';
 			$error_url = 'admin/members/merchant/add';
 
-			$utype = 'Merchant';
+			$utype = 'Logistic';
 		}else if(in_array('buyer',$this->uri->segment_array())){
 			$this->breadcrumb->add_crumb('Manage Buyers','admin/members/buyer');
 			$this->breadcrumb->add_crumb('Add Buyer','admin/members/buyer/add');
@@ -1178,7 +1178,7 @@ class Members extends Application
 		$this->form_validation->set_rules('password_conf', 'Password Confirmation', 'required|min_length[6]|matches[password]');
 		$this->form_validation->set_rules('email', 'Email Address', 'required|min_length[6]|valid_email|callback_field_exists');
 		$this->form_validation->set_rules('fullname', 'Full Name', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('merchantname', 'Merchant Name', 'trim|xss_clean');
+		$this->form_validation->set_rules('merchantname', 'Logistic Name', 'trim|xss_clean');
 		$this->form_validation->set_rules('bank', 'Bank', 'trim|xss_clean');
 		$this->form_validation->set_rules('account_name', 'Account Name', 'trim|xss_clean');
 		$this->form_validation->set_rules('account_number', 'Account Number', 'trim|xss_clean');
@@ -1332,15 +1332,15 @@ class Members extends Application
 	public function edit($id)
 	{
 		if(in_array('merchant',$this->uri->segment_array())){
-			$this->breadcrumb->add_crumb('Manage Merchants','admin/members/merchant');
-			$this->breadcrumb->add_crumb('Edit Merchant','admin/members/merchant/edit/'.$id);
-			$data['page_title'] = 'Edit Merchant';
+			$this->breadcrumb->add_crumb('Manage Logistics','admin/members/merchant');
+			$this->breadcrumb->add_crumb('Edit Logistic','admin/members/merchant/edit/'.$id);
+			$data['page_title'] = 'Edit Logistic';
 
 			$back_url = 'admin/members/merchant';
 			$success_url = 'admin/members/merchant';
 			$error_url = 'admin/members/merchant/edit/'.$id;
 
-			$utype = 'Merchant';
+			$utype = 'Logistic';
 
 		}else if(in_array('buyer',$this->uri->segment_array())){
 			$this->breadcrumb->add_crumb('Manage Buyers','admin/members/buyer');
@@ -1357,7 +1357,7 @@ class Members extends Application
 		$this->form_validation->set_rules('username', 'Username', 'required|min_length[6]');
 		$this->form_validation->set_rules('email', 'Email Address', 'required|min_length[6]|valid_email');
 		$this->form_validation->set_rules('fullname', 'Full Name', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('merchantname', 'Merchant Name', 'trim|xss_clean');
+		$this->form_validation->set_rules('merchantname', 'Logistic Name', 'trim|xss_clean');
 		$this->form_validation->set_rules('bank', 'Bank', 'trim|xss_clean');
 		$this->form_validation->set_rules('account_name', 'Account Name', 'trim|xss_clean');
 		$this->form_validation->set_rules('account_number', 'Account Number', 'trim|xss_clean');

@@ -1,1 +1,1 @@
-Incoming Order ( to Merchant & JEX )
+Incoming Order ( to Logistic & JEX )

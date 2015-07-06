@@ -859,6 +859,8 @@
             pdata.buyerdeliverytime = $('#buyerdeliverydate').val();
             pdata.buyerdeliveryslot = $('#buyerdeliverytime').val();
             pdata.merchant_trans_id = $('#merchant_trans_id').val();
+            pdata.logistic_awb = $('#logistic_awb').val();
+            pdata.fulfillment_code = $('#fulfillment_code').val();
             pdata.direction = $('#direction').val();
             pdata.auto_confirm = true; //true
             pdata.email = $('#buyer_email').val();
@@ -1010,8 +1012,8 @@
             var validisplay = '';
 
             if($('#merchant_id').val() === 'undefined' || $('#merchant_id').val() == '' || $('#merchant_id').val() == 0 || $('#merchant_id').val() == null || $('#merchant_id').val() === 'NaN'){
-                validisplay += 'Merchant Unspecified\r\n';
-                //return [false,'Merchant Unspecified'];
+                validisplay += 'Logistic Unspecified\r\n';
+                //return [false,'Logistic Unspecified'];
             }
             /*
             if($('#buyer_id').val() === 'undefined' || $('#buyer_id').val() == '' || $('#buyer_id').val() == 0 || $('#buyer_id').val() == null || $('#buyer_id').val() === 'NaN'){
@@ -1037,6 +1039,7 @@
                 validisplay += 'Weight Unspecified\r\n';
                 //return [false, 'Weight Unspecified'];
             }
+
 
             if($('#delivery_type').val() == 0){
                 validisplay += 'Delivery Type Unspecified\r\n';
@@ -1084,7 +1087,7 @@
             }
 
             if( $('#show_merchant').is(':checked') == false && $('#show_shop').is(':checked') == false ){
-                validisplay += 'One or both Merchant name and Store name must be shown\r\n';
+                validisplay += 'One or both Logistic name and Store name must be shown\r\n';
                 //return [false,'Max Length Exceeded'];
             }
 
@@ -1274,6 +1277,13 @@
                             <tr>
                                 <td colspan="2"><strong>Delivery Info</strong></td>
                             </tr>
+                            <tr class="buyer_info">
+                                <td class="row_label" id="merchant_id_label">AWB / Logistic Delivery Code<hr /><span class="fine">No Kode Logistik</span></td>
+                                <td>
+                                    <input type="text" id="logistic_awb" name="logistic_awb" value="" /><br /><span class="fine">( No. Resi / AWB / dll )</span>
+                                </td>
+                            </tr>
+
                             <tr>
                                 <td>Fulfillment ID:</td>
                                 <td>
@@ -1342,9 +1352,9 @@
                                 <td colspan="2"><strong>Order Detail</strong></td>
                             </tr>
                             <tr class="buyer_info">
-                                <td class="row_label" id="merchant_id_label">AWB / Logistic Delivery Code<hr /><span class="fine">No Kode Logistik</span></td>
+                                <td class="row_label" id="merchant_id_label">No Invoice / No Kode Penjualan Toko<hr /><span class="fine">No Kode Logistik</span></td>
                                 <td>
-                                    <input type="text" id="merchant_trans_id" name="merchant_trans_id" value="" /> <span class="fine">( No. Resi / AWB / dll )</span>
+                                    <input type="text" id="merchant_trans_id" name="merchant_trans_id" value="" /> <span class="fine">( No. Invoice / No. Pesanan / dll )</span>
                                 </td>
                             </tr>
 

@@ -1,4 +1,4 @@
-Subject: Merchant registration is successful. Welcome to Jayon Express!
+Subject: Logistic registration is successful. Welcome to Jayon Express!
 
 Hello {full_name},
 

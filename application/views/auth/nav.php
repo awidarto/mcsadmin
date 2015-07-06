@@ -98,7 +98,7 @@
 					<li class="<?php print set_hilite('admin\/reports\/reconciliation')?>" ><?php if(user_group('admin')) { echo anchor('admin/reports/reconciliation', 'Global Reconciliation'); } ?></li>
 					<li class="<?php print set_hilite('admin\/reports\/courierrecon')?>" ><?php if(user_group('admin')) { echo anchor('admin/reports/courierrecon', 'Courier Reconciliation'); } ?></li>
                     <li class="<?php print set_hilite('admin\/reports\/courierrecap')?>" ><?php if(user_group('admin')) { echo anchor('admin/reports/courierrecap', 'Courier Recap'); } ?></li>
-					<li class="<?php print set_hilite('admin\/reports\/merchantrecon')?>" ><?php if(user_group('admin')) { echo anchor('admin/reports/merchantrecon', 'Merchant Reconciliation'); } ?></li>
+					<li class="<?php print set_hilite('admin\/reports\/merchantrecon')?>" ><?php if(user_group('admin')) { echo anchor('admin/reports/merchantrecon', 'Logistic Reconciliation'); } ?></li>
 					<li class="<?php print set_hilite('admin\/reports\/devicerecon$')?>" ><?php if(user_group('admin')) { echo anchor('admin/reports/devicerecon', 'Device Reconciliation'); } ?></li>
                     <li class="<?php print set_hilite('admin\/reports\/devicerecongen')?>" ><?php if(user_group('admin')) { echo anchor('admin/reports/devicerecongen', 'Device Reconciliation ( Manual )'); } ?></li>
 					<li class="<?php print set_hilite('admin\/reports\/revenue$')?>" ><?php if(user_group('admin')) { echo anchor('admin/reports/revenue', 'Revenue Report'); } ?></li>
@@ -132,7 +132,7 @@
 			<li class="<?php print set_hilite('admin\/users')?>" ><?php if(user_group('admin')) { echo anchor('admin/users/manage', 'Users'); } ?>
 				<ul>
 					<li class="<?php print set_hilite('admin\/users')?>" ><?php if(user_group('admin')) { echo anchor('admin/users/manage', 'Administrators'); } ?></li>
-					<li class="<?php print set_hilite('admin\/members\/merchant')?>" ><?php if(user_group('admin')) { echo anchor('admin/members/merchant', 'Merchants'); } ?></li>
+					<li class="<?php print set_hilite('admin\/members\/merchant')?>" ><?php if(user_group('admin')) { echo anchor('admin/members/merchant', 'Logistics'); } ?></li>
 					<li class="<?php print set_hilite('admin\/members\/buyer')?>" ><?php if(user_group('admin')) { echo anchor('admin/members/buyer', 'Buyers'); } ?></li>
 					<li class="<?php print set_hilite('admin\/couriers')?>" ><?php if(user_group('admin')) { echo anchor('admin/couriers/manage', 'Couriers'); } ?></li>
 				</ul>

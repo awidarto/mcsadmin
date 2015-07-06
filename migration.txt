@@ -122,3 +122,7 @@ ALTER TABLE `delivery_order_active`  ADD `puchange_actor` VARCHAR(128) NULL AFTE
 06 April 2015
 ++++++++++++++++++++
 ALTER TABLE  `delivery_order_active` ADD  `dupe` INT NULL DEFAULT  '0' AFTER  `reattemp`
+
+06 July 2015
+++++++++++++++++++++
+ALTER TABLE `delivery_order_active`  ADD `logistic_awb` VARCHAR(128) NULL AFTER `fulfillment_code`,  ADD INDEX (`logistic_awb`) ;

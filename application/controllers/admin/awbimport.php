@@ -5,7 +5,8 @@ class Awbimport extends Application
     public $ordermap = array(
         'delivery_id'=>'',
         'merchant_trans_id'=>'',
-        'fulfillment_code'=>''
+        'fulfillment_code'=>'',
+        'logistic_awb'=>'',
     );
 
 

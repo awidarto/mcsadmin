@@ -665,6 +665,8 @@ class Ajax extends Application
 			'buyerdeliverytime'=>$this->input->post('buyerdeliverytime'),
 			'buyerdeliveryslot'=>$this->input->post('buyerdeliveryslot'),
             'merchant_trans_id'=>$this->input->post('merchant_trans_id'),
+            'fulfillment_code'=>$this->input->post('fulfillment_code'),
+            'logistic_awb'=>$this->input->post('logistic_awb'),
 			'directions'=>$this->input->post('direction'),
 			'auto_confirm'=>$this->input->post('auto_confirm'),
 			'email'=>$this->input->post('email'),
@@ -1071,6 +1073,9 @@ class Ajax extends Application
                 $order['buyer_id'] = $buyer_id;
                 $order['merchant_id'] = $app->merchant_id;
                 $order['merchant_trans_id'] = trim($transaction_id);
+
+                $order['fulfillment_code'] = $in->fulfillment_code;
+                $order['logistic_awb'] = $in->logistic_awb;
 
                 $order['buyer_name'] = $in->buyer_name;
                 $order['recipient_name'] = $in->recipient_name;

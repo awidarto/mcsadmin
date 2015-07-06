@@ -49,9 +49,9 @@
 
 			<?php print form_fieldset_close(); ?>
 
-			<?php print form_fieldset('Merchant Info'); ?>
+			<?php print form_fieldset('Logistic Info'); ?>
 
-			Merchant Name:<br />
+			Logistic Name:<br />
 			<input type="text" name="merchantname" size="50" class="form" value="<?php echo set_value('merchantname'); ?>" /><?php echo form_error('merchantname'); ?><br /><br />
 
 			Bank:<br />

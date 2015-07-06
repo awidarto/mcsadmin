@@ -1,1 +1,1 @@
-Canceled Order ( to Merchant, Buyer, JEX )
+Canceled Order ( to Logistic, Buyer, JEX )

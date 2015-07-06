@@ -65,7 +65,7 @@ table#recon_select td input{
 
 <?php
 
-	$opts = array('Global'=>'Global','Merchant'=>'Merchant','Courier'=>'Courier');
+	$opts = array('Global'=>'Global','Logistic'=>'Logistic','Courier'=>'Courier');
 
 	for($i=2012;$i < 2100;$i++){
 		$years[$i]=$i;

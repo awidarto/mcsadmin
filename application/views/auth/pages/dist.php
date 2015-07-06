@@ -1,12 +1,12 @@
 <script type="text/javascript">
-	
+
 	var base = '<?php print base_url();?>';
 	var controller = '<?php print $controller; ?>';
 
 	$(document).ready(function() {
 		$('#date_from').datepicker({ dateFormat: 'yy-mm-dd' });
 		$('#date_to').datepicker({ dateFormat: 'yy-mm-dd' });
-		
+
 		$('#get_week').click(function(){
 
 				var user_scopes = $('#user_scopes').val();
@@ -68,8 +68,8 @@ table#recon_select td {
 </style>
 
 <?php
-	
-	$opts = array('Global'=>'Global','Merchant'=>'Merchant','Courier'=>'Courier');
+
+	$opts = array('Global'=>'Global','Logistic'=>'Logistic','Courier'=>'Courier');
 
 	for($i=2012;$i < 2100;$i++){
 		$years[$i]=$i;
@@ -152,14 +152,14 @@ table#recon_select td {
 <!--				<tr>
 					<td colspan="2">
 						<div id="statistics"  style="width:100%;height:100%;">
-							<span>Top 5 Merchant - All Status</span>
+							<span>Top 5 Logistic - All Status</span>
 							<div id="incoming_monthly" class="stat_box" style="text-align:center">
 								<img src="<?php print base_url();?>admin/graphs/topxgraph/3/all/<?php print $from.'/'.$to;?>" alt="monthly_all" />
 							</div>
 						</div>
 					</td>
 				</tr>
--->				
+-->
 				<tr>
 					<td colspan="2">
 						<div id="statistics"  style="width:100%;height:100%;">

@@ -7,8 +7,8 @@
         print anchor('admin/import','Cancel');
     ?>
 
-    <h3>Merchant ID : <?php print $merchant_id ?></h3>
-    <h3>Merchant Name : <?php print $merchant_name ?></h3>
+    <h3>Logistic ID : <?php print $merchant_id ?></h3>
+    <h3>Logistic Name : <?php print $merchant_name ?></h3>
 
     <input type="hidden" value="<?= $merchant_name; ?>" name="merchant_name" >
     <input type="hidden" value="<?= $merchant_id; ?>" name="merchant_id" >

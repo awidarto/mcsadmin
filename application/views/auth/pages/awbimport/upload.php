@@ -11,7 +11,7 @@ label input[type=text]{
     <br /><br />
     <input type="file" name="userfile" size="50" class="form"  />
     <br /><br />
-    Merchant ID : <span id="merchant_id_txt"></span><br />
+    Logistic ID : <span id="merchant_id_txt"></span><br />
     <input type="text" value="" id="merchant_name" name="merchant_name" /><br />
 
 

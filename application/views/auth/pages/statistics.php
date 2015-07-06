@@ -1,12 +1,12 @@
 <script type="text/javascript">
-	
+
 	var base = '<?php print base_url();?>';
 	var controller = '<?php print $controller; ?>';
 
 	$(document).ready(function() {
 		$('#date_from').datepicker({ dateFormat: 'yy-mm-dd' });
 		$('#date_to').datepicker({ dateFormat: 'yy-mm-dd' });
-		
+
 		$('#get_week').click(function(){
 
 				var user_scopes = $('#user_scopes').val();
@@ -68,8 +68,8 @@ table#recon_select td {
 </style>
 
 <?php
-	
-	$opts = array('Global'=>'Global','Merchant'=>'Merchant','Courier'=>'Courier');
+
+	$opts = array('Global'=>'Global','Logistic'=>'Logistic','Courier'=>'Courier');
 
 	for($i=2012;$i < 2100;$i++){
 		$years[$i]=$i;

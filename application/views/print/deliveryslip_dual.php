@@ -215,11 +215,11 @@
 						<tbody>
 
 							<tr>
-								<td colspan="2"><strong>Merchant Info</strong></td>
+								<td colspan="2"><strong>Logistic Info</strong></td>
 							</tr>
 							<?php if($main_info['show_merchant']):?>
 								<tr>
-									<td>Nama Penjual<hr /><span class="fine">Merchant Name</span></td>
+									<td>Nama Penjual<hr /><span class="fine">Logistic Name</span></td>
 									<td>
 										<?php print $main_info['merchant'].'</span>';?>
 									</td>

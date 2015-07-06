@@ -226,7 +226,7 @@ div.stickyHeader {
 
 <?php
 
-    $opts = array('Global'=>'Global','Merchant'=>'Merchant','Courier'=>'Courier');
+    $opts = array('Global'=>'Global','Logistic'=>'Logistic','Courier'=>'Courier');
 
     for($i=2012;$i < 2100;$i++){
         $years[$i]=$i;
@@ -254,7 +254,7 @@ div.stickyHeader {
 
                         <table style="width:500px;" id="recon_select" cellspacing="0" >
                             <tr>
-                                <td><?php print (isset($select_title))?$select_title:'Merchant'; ?></td>
+                                <td><?php print (isset($select_title))?$select_title:'Logistic'; ?></td>
                                 <td colspan="3"><?php print form_dropdown('user_scopes',$merchants,$id,'id = "user_scopes"'); ?></td>
                             </tr>
                             <tr>

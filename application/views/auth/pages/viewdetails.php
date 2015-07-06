@@ -84,7 +84,7 @@
         #order_detail,#merchant_detail{
             vertical-align:top;
             padding-top:0px;
-            
+
         }
 
         #order_detail h2{
@@ -182,7 +182,7 @@
                         <tbody>
 
                             <tr>
-                                <td colspan="2"><strong>Merchant Info</strong></td>
+                                <td colspan="2"><strong>Logistic Info</strong></td>
                             </tr>
 
                             <tr>
@@ -193,7 +193,7 @@
                                 <td>Transaction ID:</td>
                                 <td><?php print $main_info['merchant_trans_id'];?></td>
                             </tr>
-<?php 
+<?php
 /*
     [mc_email] => ganti@bajuresmi.net.com.id
     [mc_street] => 2345678
@@ -218,7 +218,7 @@ $merchant_info .= ($main_info['m_country']=='')?$main_info['mc_country'].'<br />
 $merchant_info .= ($main_info['m_phone'] == '')?'Phone : '.$main_info['mc_phone']:'Phone : '.$main_info['m_phone'];
 
 
-?>                          
+?>
                             <tr>
                                 <td>Store Detail:</td>
                                 <td><?php print trim($merchant_info);?></td>

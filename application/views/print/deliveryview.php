@@ -623,12 +623,12 @@
                             <tr>
                                 <td colspan="2">
                                     <img class="qr" src="<?php print base_url().'img/qr/'.$qr;?>" alt="<?php print $qr;?>">
-                                    <br /><strong>Merchant Info</strong></td>
+                                    <br /><strong>Logistic Info</strong></td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    Merchant Name:<br />
+                                    Logistic Name:<br />
                                     <span class="fine"><?php print form_checkbox(array('name'=>'show_merchant','id'=>'show_merchant','value'=>$main_info['delivery_id'],'checked'=>$main_info['show_merchant'] ));?> Show in delivery slip</span>
                                 </td>
                                 <td>
@@ -657,6 +657,23 @@
 
                                 </td>
                             </tr>
+                            <tr>
+                                <td class="row_label">Fulfillment / Order ID</td>
+                                <td>
+                                    <?php
+                                        print $main_info['fulfillment_code'];
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="row_label">Logistic AWB</td>
+                                <td>
+                                    <?php
+                                        print $main_info['logistic_awb'];
+                                    ?>
+                                </td>
+                            </tr>
+
 <?php
 /*
     [mc_email] => ganti@bajuresmi.net.com.id
@@ -755,7 +772,7 @@ $merchant_info .= ($main_info['m_phone'] == '')?'Phone : '.$main_info['mc_phone'
                                     <span id="set_delivery_bearer" style="cursor:pointer;text-decoration: underline;">set delivery bearer</span>
                                     <div id="delivery_bearer_option" style="display:none">
                                         <select id="delivery_bearer_select">
-                                            <option value="merchant">Merchant</option>
+                                            <option value="merchant">Logistic</option>
                                             <option value="buyer">Buyer</option>
                                         </select>
                                         &nbsp;&nbsp;&nbsp;&nbsp;<span id="save_delivery_bearer" style="cursor:pointer;text-decoration: underline;">save</span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -769,7 +786,7 @@ $merchant_info .= ($main_info['m_phone'] == '')?'Phone : '.$main_info['mc_phone'
                                     <span id="set_cod_bearer" style="cursor:pointer;text-decoration: underline;">set COD bearer</span>
                                     <div id="cod_bearer_option" style="display:none">
                                         <select id="cod_surcharge_bearer_select">
-                                            <option value="merchant">Merchant</option>
+                                            <option value="merchant">Logistic</option>
                                             <option value="buyer">Buyer</option>
                                         </select>
                                         &nbsp;&nbsp;&nbsp;&nbsp;<span id="save_cod_bearer" style="cursor:pointer;text-decoration: underline;">save</span>&nbsp;&nbsp;&nbsp;&nbsp;
