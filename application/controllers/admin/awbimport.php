@@ -7,6 +7,7 @@ class Awbimport extends Application
         'merchant_trans_id'=>'',
         'fulfillment_code'=>'',
         'logistic_awb'=>'',
+        'created'=>''
     );
 
 
@@ -64,6 +65,7 @@ class Awbimport extends Application
             $header_index = $this->input->post('header_index');
             $data_index = $this->input->post('data_index');
 
+            $update_status = $this->input->post('update_status');
             //var_dump($xdata);
 
             //exit();
@@ -72,6 +74,7 @@ class Awbimport extends Application
 
             $sheetdata['merchant_id'] = $merchant_id;
             $sheetdata['merchant_name'] = $merchant_name;
+            $sheetdata['update_status'] = $update_status;
 
             foreach($xdata as $sheet=>$row){
 
@@ -95,18 +98,6 @@ class Awbimport extends Application
 
                 //print_r($head);
 
-                $datetimefields = array(
-                    'created',
-                    'ordertime',
-                    'buyerdeliverytime',
-                    'assigntime',
-                    'deliverytime'
-                );
-
-                $datefields = array(
-                    'assignment_date'
-                );
-
                 //print_r($row);
 
                 $orderdata = array();
@@ -115,30 +106,8 @@ class Awbimport extends Application
                     $temp = $row['cells'][$i];
                     $line = array();
                     for($j = 0;$j < count($head);$j++){
-
-                        /*
-                        if(in_array($head[$j], $datetimefields )){
-                            $line[ $head[$j] ] = date('Y-m-d h:i:s', $this->xls->toPHPdate($temp[$j]) ) ;
-                        }elseif(in_array($head[$j], $datefields )){
-                            $line[ $head[$j] ] = date('Y-m-d', $this->xls->toPHPdate($temp[$j]) ) ;
-                        }else{
-                        */
-                            // shift to omit "no" field
-                            $line[ $head[$j]] = $temp[$j];
-                        //}
+                        $line[ $head[$j]] = $temp[$j];
                     }
-
-                    $buyerdeliverytime = PHPExcel_Shared_Date::ExcelToPHP($line['buyerdeliverytime']);
-                    $line['buyerdeliverytime'] = date('Y-m-d h:i:s',$buyerdeliverytime);
-
-                    $line['buyerdeliverycity'] = ucwords(strtolower($line['buyerdeliverycity']));
-                    $line['buyerdeliveryzone'] = ucwords(strtolower($line['buyerdeliveryzone']));
-
-                    if( strtoupper($line['delivery_type']) == 'DO'){
-                        $line['delivery_type'] = 'Delivery Only';
-                    }
-
-                    $line['delivery_type'] = ucfirst($line['delivery_type']);
 
                     $index = random_string('alnum', 5);
                     $orderdata[$index] = $line;
@@ -154,6 +123,7 @@ class Awbimport extends Application
 
             }
 
+            print_r($sheetdata);
 
             $jsonfile = date('d-m-Y-h-i-s',time());
 
@@ -177,9 +147,11 @@ class Awbimport extends Application
 
         $merchant_id = $json['merchant_id'];
         $merchant_name = $json['merchant_name'];
+        $update_status = $json['update_status'];
 
         unset($json['merchant_id']);
         unset($json['merchant_name']);
+        unset($json['update_status']);
 
         $tables = array();
 
@@ -226,6 +198,7 @@ class Awbimport extends Application
 
         $page['merchant_id'] = $merchant_id;
         $page['merchant_name'] = $merchant_name;
+        $page['update_status'] = $update_status;
 
         $page['app_select'] = $app_select;
 
@@ -233,7 +206,7 @@ class Awbimport extends Application
 
         $this->breadcrumb->add_crumb('Import','admin/import');
 
-        $page['page_title'] = 'Import Preview';
+        $page['page_title'] = 'AWB Import Preview';
         $this->ag_auth->view('awbimport/preview',$page); // Load the view
     }
 
@@ -244,6 +217,7 @@ class Awbimport extends Application
         $jsonfile = $this->input->post('jsonfile');
         $entry = $this->input->post('entry');
         $apps = $this->input->post('apps');
+        $update_status = $this->input->post('update_status');
 
         $app_entry = array();
         foreach($apps as $app){
@@ -259,33 +233,48 @@ class Awbimport extends Application
 
         $merchant_id = $json['merchant_id'];
         $merchant_name = $json['merchant_name'];
+        //$update_status = (isset($json['update_status']))?$json['update_status']:'no_changes';
 
         unset($json['merchant_id']);
         unset($json['merchant_name']);
+        unset($json['update_status']);
+
 
         foreach($json as $sheet_id=>$rows){
-
+            //print_r($rows);
+            //print_r($entry);
             $app_key = $app_entry[$sheet_id];
             $app_id = get_app_id_from_key($app_key);
 
             $order = $this->ordermap;
             foreach ($rows['data'] as $key => $line) {
                 if(in_array($key, $entry)){
+                    print "order line: \r\n";
+
+                    print_r($line);
+
+                    $order['delivery_id'] = $line['delivery_id'];
+                    $order['fulfillment_code'] = $line['fulfillment_code'];
+                    $order['merchant_trans_id'] = $line['merchant_trans_id'];
+                    $order['logistic_awb'] = $line['logistic_awb'];
 
                     $order['merchant_id'] = $merchant_id;
                     $order['application_id'] = $app_id;
                     $order['application_key'] = $app_key;
-                    $order['trx_detail'] = $trx_detail;
 
-                    $trx_id = 'TRX_'.$merchant_id.'_'.str_replace(array(' ','.'), '', microtime());
+                    if($update_status != 'no_changes'){
+                        $order['status'] = $update_status;
+                    }else{
+                        $order['status'] = 'no_changes';
+                    }
 
                     print "order input: \r\n";
                     print_r($order);
 
                     $trx = json_encode($order);
-                    $result = $this->order_save($trx,$app_key,$trx_id);
+                    $result = $this->order_save($trx,$app_key);
 
-                    //print $result;
+                    print $result;
 
                 }
 
@@ -299,7 +288,7 @@ class Awbimport extends Application
 
     // worker functions
 
-    public function order_save($indata,$api_key,$transaction_id)
+    public function order_save($indata,$api_key)
     {
         $args = '';
 
@@ -331,43 +320,33 @@ class Awbimport extends Application
                 print "order input to save: \r\n";
                 print_r($in);
 
+                $delivery_id = (isset($in->delivery_id) && $in->delivery_id != "")?$in->delivery_id:'';
 
-                if(isset($in->merchant_trans_id) && $in->merchant_trans_id != ""){
-                    $transaction_id = $in->merchant_trans_id;
-                }
-
-
-                $transaction_id = trim($transaction_id);
+                $merchant_trans_id = (isset($in->merchant_trans_id) && $in->merchant_trans_id != "")?$in->merchant_trans_id:'';
 
                 $fulfillment_code = (isset($in->fulfillment_code))?$in->fulfillment_code:'';
 
+                $logistic_awb = (isset($in->logistic_awb))?$in->logistic_awb:'';
 
-                print_r($order);
+                if($logistic_awb != ''){
 
-                $inres = $this->db->insert($this->config->item('incoming_delivery_table'),$order);
-
-                $delivery_id = '';
-
-                if(isset($in->delivery_id) ){
-                    if(is_null($in->delivery_id) || $in->delivery_id == ''){
-                        $delivery_id = '';
+                    if($in->status == 'no_changes'){
+                        $up = array('logistic_awb'=>$logistic_awb);
                     }else{
-                        $delivery_id = trim($in->delivery_id);
+                        $up = array(
+                            'logistic_awb'=>$logistic_awb,
+                            'status'=>$in->status
+                        );
                     }
+
+                    $this->db->where('fulfillment_code',$fulfillment_code);
+                    $this->db->or_where('delivery_id',$delivery_id);
+                    $this->db->or_where('merchant_trans_id',$merchant_trans_id);
+                    $result = $this->db->update($this->config->item('incoming_delivery_table'),$up);
+
                 }else{
-                    $delivery_id = '';
+                    $result = 0;
                 }
-
-                if($fulfillment_code != '' && $delivery_id != ''){
-
-                }else{
-                    if($transaction_id != ''){
-                        $this->db->where('fulfillment_code',$fulfillment_code)
-                            ->or_where('delivery_id', $delivery_id)
-                            ->update($this->config->item('incoming_delivery_table'),array('merchant_trans_id'=>$transaction_id));
-                    }
-                }
-
 
             }
         }
@@ -567,7 +546,7 @@ class Awbimport extends Application
 
     private function log_access($api_key,$query,$result,$args = null){
         $data['timestamp'] = date('Y-m-d H:i:s',time());
-        $data['accessor_ip'] = $this->accessor_ip;
+        $data['accessor_ip'] = $_SERVER['REMOTE_ADDR'];
         $data['api_key'] = (is_null($api_key))?'':$api_key;
         $data['query'] = $query;
         $data['result'] = $result;

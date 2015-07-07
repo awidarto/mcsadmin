@@ -9,9 +9,12 @@
 
     <h3>Logistic ID : <?php print $merchant_id ?></h3>
     <h3>Logistic Name : <?php print $merchant_name ?></h3>
+    <h4>Post Update Process</h4>
+    <h3>Update Status to : <?php print $update_status ?></h3>
 
     <input type="hidden" value="<?= $merchant_name; ?>" name="merchant_name" >
     <input type="hidden" value="<?= $merchant_id; ?>" name="merchant_id" >
+    <input type="hidden" value="<?= $update_status; ?>" name="update_status" >
     <input type="hidden" value="<?= $jsonfile; ?>" name="jsonfile" >
 
     <?php foreach ($tables as $name => $table): ?>
