@@ -207,18 +207,21 @@ $config['min_lon'] = 106.699688;
 $config['origin_lat'] =  -6.28776600000;
 $config['origin_lon'] =  106.69635800000;
 
+$config['delivery_status_colors'] = array(
+    $config['trans_status_mobile_delivered'] => 'green',
+    $config['trans_status_mobile_return'] => 'orange',
+    $config['trans_status_canceled'] => 'red',
+);
+
+
 $config['actors_code'] = array(
-	'mobile'=>'MB',
-	'admin'=>'AD',
-	'buyer'=>'BY',
-	'merchant'=>'MC'
+    'mobile'=>'MB',
+    'admin'=>'AD',
 );
 
 $config['actors_title'] = array(
-	'MB'=>'mobile',
-	'AD'=>'admin',
-	'BY'=>'buyer',
-	'MC'=>'merchant'
+    'MB'=>'rider',
+    'AD'=>'admin',
 );
 
 

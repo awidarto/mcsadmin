@@ -23,7 +23,7 @@ class Admin extends Application
 				->result();
 
 			$locations = array();
-
+            /*
 			foreach($devices as $d){
 				$loc = $this->db
 					->select('identifier,timestamp,latitude as lat,longitude as lng')
@@ -46,7 +46,7 @@ class Admin extends Application
 						);
 				}
 			}
-
+            */
 			$page['locdata'] = json_encode($locations);
 
 

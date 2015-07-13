@@ -3620,6 +3620,7 @@ class Delivery extends Application
 
             $whchangestatus = '<span class="whchangestatus" id="'.$key['delivery_id'].'" style="cursor:pointer;text-decoration:underline;" >WHChgStat</span>';
 
+            $change3plstatus = '<span class="change3plstatus" id="'.$key['delivery_id'].'" style="cursor:pointer;text-decoration:underline;" >3PL ChgStat</span>';
 
 			$datefield = ($bardate == $key['assignment_date'])?'':$key['assignment_date'];
 			$devicefield = ($bardev == $key['device'])?'&nbsp;':$key['device'];
@@ -3677,7 +3678,7 @@ class Delivery extends Application
                 '<img class="sign" src="'.$sign['sign'].'" />',
                 $key['pending_count'],
                 $notes,
-				$printslip.'<br /><br />'.$printlabel.'<br /><br />'.$reassign.'<br /><br />'.$changestatus.'<br /><br />'/*.$puchangestatus.'<br /><br />'.$whchangestatus.'<br /><br />'*/.$viewlog,
+				$printslip.'<br /><br />'.$printlabel.'<br /><br />'.$reassign.'<br /><br />'.$changestatus.'<br /><br />'.$change3plstatus.'<br /><br />'/*.$puchangestatus.'<br /><br />'.$whchangestatus.'<br /><br />'*/.$viewlog,
                 $this->hide_trx($key['merchant_trans_id']),
                 $key['fulfillment_code'],
                 $key['logistic_awb'],

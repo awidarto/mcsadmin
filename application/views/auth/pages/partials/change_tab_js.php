@@ -15,3 +15,9 @@
                 $('#whchange_id').html(delivery_id);
                 $('#whchangestatus_dialog').dialog('open');
             }
+
+            if ($(e.target).is('.change3plstatus')) {
+                var delivery_id = e.target.id;
+                $('#change_id').html(delivery_id);
+                $('#changestatus_3pl_dialog').dialog('open');
+            }
